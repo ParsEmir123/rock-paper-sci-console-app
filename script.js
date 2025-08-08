@@ -14,8 +14,21 @@ function getUserChoice(){
 
 
 }
+function compare(user,computer){
+    if(user === computer) return 0 ;
+    else if((user.toLowerCase() ==="rock" && computer.toLowerCase()==="scissor")||(user.toLowerCase() ==="scissor" && computer.toLowerCase()==="paper")||(user.toLowerCase() ==="paper" && computer.toLowerCase()==="rock") ) return 1;
+    else return 2;
+}
 
 
-
-    console.log(getComputerChoice());
-    console.log(getUserChoice());
+function mainLogic(){
+    user_score = 0;
+    computer_score=0;
+    while(computer_score!==3 || user_score!==3){
+        result =compare(getUserChoice(),getComputerChoice());
+        if(result===0) console.log(`It's a tie.\nPlayer: ${user_score}\nAI: ${computer_score}`);
+        else if(result ===1) {user_score++; console.log(`Player Wins.\nPlayer: ${user_score}\nAI: ${computer_score}`);}
+        else {computer_score++;console.log(`AI Wins.\nPlayer: ${user_score}\nAI: ${computer_score}`);}
+    }
+}
+mainLogic();
